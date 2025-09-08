@@ -32,7 +32,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 
 # Configuraciones locales
-/application/config/database.php
+# /application/config/database.php
 
 # Archivos de entorno
 .env
