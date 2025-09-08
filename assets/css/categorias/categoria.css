@@ -1,0 +1,322 @@
+/* ==========================
+   Variables y Reset
+========================== */
+:root {
+
+  --blue-700: #110b26;
+  --blue-600: #9bc3f9;
+  --gray-50: #f9fafb;
+  --gray-600: #4b5563;
+  --white: #ffffff;
+  --green-500: #10b981;
+  --shadow: 0 6px 20px rgba(16,24,40,0.08);
+  --shadow-strong: 0 12px 30px rgba(16,24,40,0.12);
+  --radius: 12px;
+  --max-width: 1120px;
+  --header-height: 64px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: 'Montserrat', sans-serif; background: var(--gray-50); color: #1f2937; }
+a { text-decoration: none; color: inherit; }
+
+/* ==========================
+   Contenedor general
+========================== */
+.container {
+  width: calc(100% - 32px);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ==========================
+   Header / Encabezado
+========================== */
+.site-header{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  background: var(--white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  z-index: 999;
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  height: var(--header-height);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo{width:48px;height:48px;object-fit:cover;border-radius:6px}
+.site-title{
+  margin:0;
+  color: var(--blue-700);
+  font-size:1.25rem;
+  font-weight:700;
+}
+
+/* Navigation */
+.main-nav{display:flex;align-items:center;gap:8px}
+.nav-links{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:none;
+  gap:28px;
+  align-items:center;
+}
+.nav-links li{display:inline}
+.nav-links a{
+  text-decoration:none;
+  color: #374151;
+  font-weight:600;
+  transition: color .15s ease;
+}
+.nav-links a:hover{color:var(--blue-600)}
+
+.menu-btn{
+  background:transparent;
+  border:0;
+  cursor:pointer;
+  color:#374151;
+  display:inline-flex;
+  align-items:center;
+  padding:8px;
+}
+
+/* Mobile menu */
+.mobile-menu{
+  background:var(--white);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  width:100%;
+}
+.mobile-menu ul{
+  list-style:none;
+  margin:0;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  font-weight:700;
+}
+.mobile-menu a{
+  text-decoration:none;
+  color:#374151;
+}
+.hidden{display:none!important}
+
+/* ==========================
+   Main Content / Productos
+========================== */
+.main-content{
+  padding-top: 100px; /* espacio para header fijo */
+  margin-bottom: 48px;
+}
+
+/* Sección de categorías */
+.category-products {
+  padding: 2rem 0;
+}
+
+.hero-title{
+  color: var(--blue-700);
+}
+
+
+/* Animación: aparece desde la izquierda */
+@keyframes slideIn {
+  from {
+    transform: translateX(-70px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Aplicamos a los elementos */
+.logo,
+.site-title {
+  animation: slideIn 1s ease-out forwards;
+}
+
+/* Para que el texto aparezca después del logo */
+.site-title {
+  animation-delay: 0.1s;
+}
+
+.category-products .section-title {
+  text-align: center;
+  color: var(--blue-700);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* Grid de productos */
+.products-grid {
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 640px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 768px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Tarjeta producto */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-strong); }
+
+.card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: var(--blue-700);
+}
+
+.card p { font-size: 0.95rem; color: var(--gray-600); margin-bottom: 0.5rem; }
+
+/* Precio destacado */
+.card .price { font-weight:700; color:var(--green-500); font-size:1.1rem; margin-bottom:0.5rem; }
+
+/* Botón Ver más */
+.card .btn {
+  display:inline-block;
+  padding:6px 12px;
+  background-color:var(--blue-700);
+  color:var(--white);
+  border-radius:6px;
+  font-weight:600;
+  transition: background 0.2s ease;
+}
+.card .btn:hover { background-color: var(--blue-600); }
+
+/* Links de tarjeta */
+.card-link { display:block; color:inherit; }
+.card-link:hover .card { transform: translateY(-6px); box-shadow: var(--shadow-strong); }
+
+/* Botón volver */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 90px;
+  background: linear-gradient(135deg, #0f9a6b, #14b78f);
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+   margin-top: 20px;
+    margin-bottom: 25px;
+    
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #14b78f, #0f9a6b);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-btn::before {
+  font-size: 18px;
+}
+/* ==========================
+   Footer y WhatsApp
+========================== */
+
+/* Footer */
+.site-footer{
+  background: var(--blue-700);
+  color: #fff;
+  text-align: center;
+  padding: 24px 12px;
+  margin-top: 28px;
+}
+
+.footer-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-links{
+  display: flex;
+  gap: 50px;
+  margin-top: 8px;
+}
+
+.social-links a img{
+  
+  width: 42px;      /* tamaño de ícono */
+  height: 42px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-links a:hover img{
+  transform: scale(1.02);    /* efecto zoom al pasar el mouse */
+  filter: brightness(1.02);  /* se ve más brillante */
+}
+
+
+.whatsapp-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: var(--green-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(16,185,129,0.18);
+  text-decoration: none;
+}
+
+/* ==========================
+   Responsive ajustes
+========================== */
+@media (min-width: 768px) {
+  .product-img { max-height: 200px; }
+  .nav-links { display:flex; }
+  .menu-btn { display:none; }
+  .mobile-menu { display:none; }
+}
+
+h2 {
+  text-align: center;        /* Centra el texto horizontalmente */
+              /* Azul similar a tu tema */
+  font-size: 2rem;           /* Tamaño grande para título de sección */
+  font-weight: 700;          /* Negrita */
+  margin: 1.5rem 0;          /* Espaciado arriba y abajo */
+}
