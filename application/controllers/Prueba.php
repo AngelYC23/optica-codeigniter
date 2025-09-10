@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * @property Prueba_model $Prueba_model
+ */
 
 class Prueba extends CI_Controller {
 
@@ -20,8 +23,8 @@ class Prueba extends CI_Controller {
         echo "</ul>";
 
         // Listar tablas de la BD optica
-        $tablas = $this->Prueba_model->listar_tablas('optica');
-        echo "<h3>Tablas en la BD 'optica':</h3><ul>";
+        $tablas = $this->Prueba_model->listar_tablas('Optica');
+        echo "<h3>Tablas en la BD 'Optica':</h3><ul>";
         foreach ($tablas as $t) {
             echo "<li>" . implode("", (array)$t) . "</li>";
         }
