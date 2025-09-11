@@ -92,10 +92,75 @@ class Carrito extends CI_Controller {
         }
         redirect(base_url('index.php/carrito'));
     }
-
-    // Finalizar compra (solo ejemplo)
-    public function finalizar() {
-        $this->session->unset_userdata('carrito'); // vacía el carrito
-        echo "<p>Compra finalizada con éxito. Gracias por tu compra!</p>";
+// Checkout: mostrar vista para seleccionar método de pago
+public function checkout() {
+    $carrito = $this->session->userdata('carrito') ?? [];
+    if(empty($carrito)){
+        redirect('carrito'); // si carrito vacío
     }
+    $data['titulo'] = 'Finalizar Compra';
+    $data['carrito'] = $carrito;
+    $data['extra_css'] = ['assets/css/checkout.css'];
+    $this->load->view('layouts/header', $data);
+    $this->load->view('paginas/checkout', $data);
+    $this->load->view('layouts/footer');
+}
+
+// Procesar compra: guardar pedido y detalles
+public function procesar() {
+    $carrito = $this->session->userdata('carrito') ?? [];
+    if(empty($carrito)){
+        redirect('carrito');
+    }
+
+    $metodo_pago = $this->input->post('metodo_pago'); // si quieres guardarlo, crea campo extra
+    $total = 0;
+    foreach($carrito as $item){
+        $total += $item['precio'] * $item['cantidad'];
+    }
+
+    // Suponiendo que no tienes usuarios logueados, pon id_usuario = 1
+    $this->db->insert('pedidos', [
+        'id_usuario' => 1, // cambiar si tienes login
+        'total' => $total,
+        'estado' => 'pendiente',
+        'fecha' => date('Y-m-d H:i:s')
+    ]);
+    
+    $id_pedido = $this->db->insert_id();
+
+    // Guardar detalles
+    foreach($carrito as $item){
+        $this->db->insert('detalles_pedido', [
+            'id_pedido' => $id_pedido,
+            'id_producto' => $item['id'],
+            'cantidad' => $item['cantidad'],
+            'precio_unitario' => $item['precio']
+        ]);
+    }
+
+    // Vaciar carrito
+    $this->session->unset_userdata('carrito');
+
+    // Redirigir a factura
+    redirect('carrito/factura/'.$id_pedido);
+}
+
+// Mostrar factura
+public function factura($id_pedido) {
+    $pedido = $this->db->get_where('pedidos', ['id_pedido' => $id_pedido])->row_array();
+    $detalles = $this->db->select('dp.*, p.nombre')
+                         ->from('detalles_pedido dp')
+                         ->join('productos p', 'dp.id_producto = p.id_producto')
+                         ->where('dp.id_pedido', $id_pedido)
+                         ->get()
+                         ->result_array();
+
+    $data['pedido'] = $pedido;
+    $data['detalles'] = $detalles;
+    $this->load->view('paginas/factura', $data);
+}
+
+
+    
 }

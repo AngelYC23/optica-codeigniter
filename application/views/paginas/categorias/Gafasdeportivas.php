@@ -1,52 +1,53 @@
 <section class="category-products">
-    <h2>Gafas Depostivas</h2>
+    <h2>Gafas Deportivas</h2>
     <a href="javascript:history.back()" class="back-btn">← Regresar</a>
     <div class="products-grid">
 
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/depo1.webp') ?>" alt="Gafas de Sol Clásicas" />
-            <h3>Radar® EV Path®</h3>
-            <p class="price">Q200.00</p>
-            <p>Talla única </p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
+        <?php if (empty($productos)): ?>
+            <p>No hay productos en esta categoría.</p>
+        <?php else: ?>
+            <?php foreach ($productos as $producto): ?>
+                <article class="card">
+                    <img src="<?= base_url('assets/img/imagnecate/' . $producto['imagen']) ?>"
+                        alt="<?= $producto['nombre'] ?>" />
+                    <h3><?= $producto['nombre'] ?></h3>
+                    <p class="price">Q<?= number_format($producto['precio'], 2) ?></p>
+                    <p><?= $producto['descripcion'] ?></p>
 
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/depo2.webp') ?>" alt="Gafas de Sol Clásicas" />
-            <h3>Radar® EV Path®</h3>
-            <p class="price">Q300.00</p>
-            <p>Talla única </p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/depo3.avif') ?>" alt="Gafas de Sol Clásicas" />
-            <h3>Wind Jacket® 2.0</h3>
-            <p class="price">Q400.00</p>
-            <p>Talla única </p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/depo4.avif') ?>" alt="Gafas de Sol Clásicas" />
-            <h3>EVZero™ Blades</h3>
-            <p class="price">Q450.00</p>
-            <p>Talla única </p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/depo5.png') ?>" alt="Gafas de Sol Clásicas" />
-            <h3>2024 Tour De France™ Encoder Strike</h3>
-            <p class="price">Q450.00</p>
-            <p>Talla única </p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
+                    <!-- Botón que agrega al carrito vía AJAX -->
+                    <a href="<?= base_url('index.php/carrito/agregar/' . $producto['id_producto']) ?>"
+                        class="btn comprar-btn">
+                        🛒 Agregar al carrito
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        <?php endif; ?>
 
     </div>
 </section>
+
+<script>
+    // Función para agregar productos sin recargar
+    function agregarAlCarrito(id_producto) {
+        fetch('<?= base_url('index.php/carrito/agregar') ?>', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id_producto: id_producto,
+                    cantidad: 1
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                // Actualizar contador del carrito (si lo tienes en header)
+                const contador = document.querySelector('.carrito-cantidad');
+                if (contador) contador.innerText = data.cantidad_total;
+
+                // Mensaje opcional
+                alert('Producto agregado al carrito');
+            })
+            .catch(err => console.error(err));
+    }
+</script>

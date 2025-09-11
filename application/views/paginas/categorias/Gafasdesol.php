@@ -2,60 +2,39 @@
 <section class="category-products">
     <h2 class="hero-title">GAFAS DE SOL</h2>
     <div class="products-grid">
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/desol1.jpg.webp') ?>" alt="Gafas de Sol Clásicas" />
-            <h3>Porsche Desing P8936</h3>
-            <p class="price">Q250.00</p>
-            <p>Protección UV con estilo atemporal.</p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/desol2.webp') ?>" alt="Gafas de Sol Modernas" />
-            <h3>Porsche Desing P8947</h3>
-            <p class="price">Q300.00</p>
-            <p>Estilo y comodidad para todos los días.</p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/desol3.webp') ?>" alt="Gafas de Sol Modernas" />
-            <h3>Porsche Desing P8948</h3>
-            <p class="price">Q300.00</p>
-            <p>Estilo y comodidad para todos los días.</p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/desol4.webp') ?>" alt="Gafas de Sol Modernas" />
-            <h3>Porsche Desing P8964</h3>
-            <p class="price">Q300.00</p>
-            <p>Estilo y comodidad para todos los días.</p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/desol5.webp') ?>" alt="Gafas de Sol Modernas" />
-            <h3>Carrera 1016/s</h3>
-            <p class="price">Q300.00</p>
-            <p>Estilo y comodidad para todos los días.</p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
-        <article class="card">
-            <img src="<?= base_url('assets/img/imagnecate/desol6.webp') ?>" alt="Gafas de Sol Modernas" />
-            <h3>Carrera 1016/s</h3>
-            <p class="price">Q300.00</p>
-            <p>Estilo y comodidad para todos los días.</p>
-            <a href="https://wa.me/50232394308?text=Hola,%20estoy%20interesado%20en%20las%20Gafas%20de%20Sol%20Modelo%20Porsche%20Design%20P8936"
-                class="btn comprar-btn" target="_blank">Comprar por WhatsApp</a>
-        </article>
-
+        <?php foreach ($productos as $producto): ?>
+            <article class="card">
+                <img src="<?= base_url('assets/img/imagnecate/' . $producto['imagen']) ?>"
+                    alt="<?= $producto['nombre'] ?>" />
+                <h3><?= $producto['nombre'] ?></h3>
+                <p class="price">Q<?= number_format($producto['precio'], 2) ?></p>
+                <p><?= $producto['descripcion'] ?></p>
+                <a href="<?= base_url('index.php/carrito/agregar/' . $producto['id_producto']) ?>"
+                    class="btn comprar-btn">
+                    🛒 Agregar al carrito
+                </a>
+            </article>
+        <?php endforeach; ?>
     </div>
 </section>
+
+
+<script>
+    function agregarAlCarrito(id_producto) {
+        const formData = new FormData();
+        formData.append('id_producto', id_producto);
+        formData.append('cantidad', 1);
+
+        fetch('<?= base_url('index.php/carrito/agregar') ?>', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                const contador = document.querySelector('.carrito-cantidad');
+                if (contador) contador.innerText = data.cantidad_total;
+                alert('Producto agregado al carrito');
+            })
+            .catch(err => console.error('Error en carrito:', err));
+    }
+</script>
