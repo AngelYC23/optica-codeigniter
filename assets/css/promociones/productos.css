@@ -16,6 +16,13 @@
   --header-height: 64px;
 }
 
+.wrapper {
+    padding: 40px; /* espacio desde todos los lados */
+    max-width: 1200px; /* opcional: ancho máximo */
+    margin: 0 auto; /* centra horizontalmente */
+}
+
+
 /* Tipografía global */
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -77,6 +84,9 @@ body{
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 16px;
+  margin-bottom:40px;
+
+  padding:3rem 0 2rem;
 }
 
 /* Header */
@@ -233,6 +243,11 @@ body{
   color:var(--blue-700);
   margin: 16px 0 24px;
   font-weight:700;
+  
+    margin-top: 50px; /* ajusta el valor según necesites */
+    margin-bottom: 20px; /* opcional: espacio abajo */
+
+
 }
 .v2{
 

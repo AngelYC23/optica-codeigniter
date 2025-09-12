@@ -24,7 +24,7 @@ html {
 
 /* Tipografía global */
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{height:10%}
 body{
   margin:0;
   font-family: 'Montserrat', sans-serif;
@@ -35,6 +35,11 @@ body{
 }
 
 
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 16px; /* espacio lateral */
+}
 
 
 /* LOADER */
@@ -200,13 +205,18 @@ body{
 }
 
 /* Secciones */
-.section{margin-bottom:40px}
+.section{
+  margin-bottom:40px;
+
+  padding:3rem 0 2rem;
+
+}
 .text-center{text-align:center}
 .hero-title{
   font-size:2.25rem; /* 4xl/5xl approximado */
   color:var(--blue-700);
   font-weight:800;
-  margin: 8px 0 12px;
+  margin: 48px 0 12px;
 }
 
 .v2{
@@ -224,7 +234,7 @@ body{
   box-shadow: var(--shadow);
 }
 .hero-video {
-  width: 60%;
+  width: 55%;
   max-width: 900px;
   border-radius: 12px;
   box-shadow: var(--shadow);
@@ -234,7 +244,7 @@ body{
 
 /* Productos: grid */
 .section-title{
-  font-size:1.5rem;
+  font-size:2rem;
   text-align:center;
   color:var(--blue-700);
   margin: 16px 0 24px;
@@ -339,7 +349,7 @@ body{
   padding: 60px 20px;
   background:#eff6ff; 
   border-radius: 24px;
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 60px auto;
   box-shadow: 0 8px 30px rgba(187, 187, 187, 0.08);
   overflow: hidden;
@@ -351,13 +361,7 @@ body{
   box-shadow: 0 12px 40px rgba(104, 104, 104, 0.12);
 }
 
-#ubicacion .section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--blue-700); /* verde oscuro elegante */
-  text-align: center;
-  margin-bottom: 25px;
-}
+
 
 #ubicacion p {
   font-size: 1rem;
@@ -403,7 +407,7 @@ body{
   border-radius:10px;
   border:1px solid #d1d5db;
   outline:none;
-  font-size:1rem;
+  font-size:0.95rem;
   transition: all 0.2s ease;
 }
 .contact-form input:focus,
@@ -520,6 +524,19 @@ body{
   text-decoration:none;
 }
 
+
+
+.social-links a img{
+  
+  width: 42px;      /* tamaño de ícono */
+  height: 42px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-links a:hover img{
+  transform: scale(1.02);    /* efecto zoom al pasar el mouse */
+  filter: brightness(1.02);  /* se ve más brillante */
+}
 /* Espacios responsivos para el layout */
 
 /* Small screens >= 640px (sm) */

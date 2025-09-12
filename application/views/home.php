@@ -1,4 +1,6 @@
 <!-- Inicio -->
+
+<div class="container">
 <section class="section text-center" >
   <h2 class="hero-title"><span class="v2">ÓPTICA</span> VISIÓN CLARA</h2>
   <p class="hero-sub">Tu mejor opción para cuidar y mejorar tu visión con estilo y calidad.</p>
@@ -77,12 +79,12 @@
     <form class="contact-form" onsubmit="return false;">
       <div class="form-group">
         <label for="nombre"><i class="fas fa-user"></i> Nombre</label>
-        <input id="nombre" name="nombre" placeholder="Tu nombre completo" required type="text" />
+        <input id="nombre" name="nombre" placeholder="Nombre completo" required type="text" />
       </div>
 
       <div class="form-group">
         <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
-        <input id="email" name="email" placeholder="tuemail@ejemplo.com" required type="email" />
+        <input id="email" name="email" placeholder="Correo" required type="email" />
       </div>
 
       <div class="form-group">
@@ -99,8 +101,9 @@
     <div class="contact-info">
       <h3>Información de contacto</h3>
       <p><i class="fas fa-map-marker-alt mr"></i> Calle Principal, Ciudad de Guatemala</p>
-      <p><i class="fas fa-phone mr"></i> +502 3455-5139</p>
+      <p><i class="fas fa-phone mr"></i> +502 3239-4308</p>
       <p><i class="fas fa-envelope mr"></i> contacto@opticavisionclara.com</p>
     </div>
   </div>
 </section>
+</div>

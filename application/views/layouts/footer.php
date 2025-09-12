@@ -9,8 +9,8 @@
         <a href="https://www.youtube.com" target="_blank">
           <img src="<?= base_url('assets/img/imagenes_promociones/youtube.png') ?>" alt="YouTube">
         </a>
-        <a href="https://www.tiktok.com" target="_blank">
-          <img src="<?= base_url('assets/img/imagenes_promociones/gorjeo (1).png') ?>" alt="TikTok">
+        <a href="https://about.x.com/en/who-we-are/brand-toolkit" target="_blank">
+          <img src="<?= base_url('assets/img/imagenes_promociones/gorjeo (1).png') ?>" alt="X">
         </a>
       </div>
       <p>© 2025 Óptica Visión Clara. Todos los derechos reservados.</p>

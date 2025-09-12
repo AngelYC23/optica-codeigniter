@@ -50,8 +50,10 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <img alt="Logo de Óptica Visión Clara" class="logo"
-          src="<?= base_url('assets/img/imagenes_promociones/logo.jpeg') ?>" />
+         <a href="<?= base_url('index.php/home') ?>">
+      <img alt="Logo de Óptica Visión Clara" class="logo"
+        src="<?= base_url('assets/img/imagenes_promociones/logo.jpeg') ?>" />
+    </a>
         <h1 class="site-title">OVC</h1>
       </div>
 
@@ -61,16 +63,24 @@
           <li><a href="#ubicacion">Ubicación</a></li>
           <li><a href="<?= base_url('index.php/productos') ?>">Productos</a></li>
           <li><a href="<?= base_url('index.php/promociones') ?>">Promociones y Asociaciones</a></li>
+          <li>
+  <a href="<?= base_url('index.php/login') ?>" title="Iniciar sesión"> 
+    <img src="<?= base_url('assets/img/imagenes_promociones/usuario.png') ?>" alt="Iniciar sesión">
+  </a>
+</li>
+
 
           <!-- Icono de carrito -->
           <li class="carrito">
-            <a href="<?= base_url('index.php/carrito') ?>" title="Ver carrito">
-              <i class="fas fa-shopping-cart fa-lg"></i>
-              <?php if (!empty($carrito)): ?>
-                <span class="carrito-cantidad"><?= count($carrito) ?></span>
-              <?php endif; ?>
-            </a>
-          </li>
+  <a href="<?= base_url('index.php/carrito') ?>" title="Ver carrito">
+    <i class="fas fa-shopping-cart fa-lg"></i>
+    <?php if (!empty($carrito)): ?>
+      <span class="carrito-cantidad"><?= count($carrito) ?></span>
+    <?php endif; ?>
+  </a>
+</li>
+
+
 
         </ul>
 
@@ -80,17 +90,24 @@
       </nav>
     </div>
 
-    <!-- Menú móvil -->
-    <div class="mobile-menu hidden" id="mobile-menu">
-      <ul>
-        <li><a href="<?= base_url('index.php/home') ?>">Inicio</a></li>
-        <li><a href="<?= base_url('index.php/productos') ?>">Productos</a></li>
-        <li><a href="<?= base_url('index.php/promociones') ?>">Promociones y Asociaciones</a></li>
-        <li>
-          <a href="<?= base_url('index.php/Carrito') ?>" title="Ver carrito">
-            🛒 Carrito (<?= $cantidad_carrito ?>)
-          </a>
-        </li>
-      </ul>
-    </div>
+<!-- Menú móvil -->
+<div class="mobile-menu hidden" id="mobile-menu">
+  <ul>
+    <li><a href="<?= base_url('index.php/home') ?>">Inicio</a></li>
+    <li><a href="<?= base_url('index.php/productos') ?>">Productos</a></li>
+    <li><a href="<?= base_url('index.php/promociones') ?>">Promociones y Asociaciones</a></li>
+    <li>
+      <a href="<?= base_url('index.php/promociones') ?>" title="Iniciar sesión">
+        <img src="<?= base_url('assets/img/imagenes_promociones/usuario.png') ?>" alt="Iniciar sesión" style="width:24px; vertical-align:middle;">
+        Usuario
+      </a>
+    </li>
+    <li>
+      <a href="<?= base_url('index.php/carrito') ?>" title="Ver carrito">
+        🛒 Carrito (<?= $cantidad_carrito ?>)
+      </a>
+    </li>
+  </ul>
+</div>
+
   </header>

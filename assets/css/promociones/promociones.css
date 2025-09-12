@@ -24,6 +24,11 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
+.wrapper {
+    padding: 40px; /* espacio desde todos los lados */
+    max-width: 1200px; /* opcional: ancho máximo */
+    margin: 0 auto; /* centra horizontalmente */
+}
 
 
 
@@ -219,6 +224,11 @@ body{
   color:var(--blue-700);
   margin: 16px 0 24px;
   font-weight:700;
+}
+
+.span{
+
+  color: var(--blue-600);
 }
 
 .products-grid {

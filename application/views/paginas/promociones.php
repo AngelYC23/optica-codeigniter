@@ -1,3 +1,6 @@
+
+<div class="wrapper">
+
 <section class="section" id="promociones">
   <h2 class="section-title">OFERTAS</h2>
   <div class="products-grid">
@@ -25,7 +28,7 @@
       </ul>
 
       <div class="promo-meta">
-        <span class="deadline">Válido hasta: <strong>31/08/2025</strong></span>
+        <span class="deadline">Válido hasta: <strong>31/10/2025</strong></span>
         <span class="terms-hint">*Aplican restricciones</span>
       </div>
 
@@ -64,7 +67,7 @@
       </ul>
 
       <div class="promo-meta">
-        <span class="deadline">Vigente: <strong>agosto 2025</strong></span>
+        <span class="deadline">Vigente: <strong>septiembre 2025</strong></span>
         <span class="terms-hint">*Consulta modelos participantes</span>
       </div>
 
@@ -203,7 +206,7 @@
 </section>
 
 <section class="section" id="marcas-asociadas">
-  <h2 class="section-title">Marcas Asociadas</h2>
+  <h2 class="section-title"><span class="span">Marcas</span> Asociadas</h2>
   <div class="brands-grid">
 
     <!-- Puma -->
@@ -215,7 +218,7 @@
     </div>
 
     <!-- Guess -->
-    <div class="brand-card" style="background-image: url('<?= base_url('assets/img/imagenes_promociones/guess.png') ?>');">
+    <div class="brand-card" style="background-image: url('<?= base_url('assets/img/imagenes_promociones/GUESS.JPG') ?>');">
       <div class="brand-overlay">
         <h3 class="brand-name">Guess</h3>
         <p class="brand-desc">Moda icónica y sofisticada para todas las ocasiones.</p>
@@ -223,7 +226,7 @@
     </div>
 
     <!-- Ray-Ban -->
-    <div class="brand-card" style="background-image: url('<?= base_url('assets/img/imagenes_promociones/ray-ban.png') ?>');">
+    <div class="brand-card" style="background-image: url('<?= base_url('assets/img/imagenes_promociones/Rayban.jpg') ?>');">
       <div class="brand-overlay">
         <h3 class="brand-name">Ray-Ban</h3>
         <p class="brand-desc">Clásicos atemporales y calidad superior en gafas.</p>
@@ -231,7 +234,7 @@
     </div>
 
     <!-- Oakley -->
-    <div class="brand-card" style="background-image: url('<?= base_url('assets/img/imagenes_promociones/oakley.png') ?>');">
+    <div class="brand-card" style="background-image: url('<?= base_url('assets/img/imagenes_promociones/oakley.jpg') ?>');">
       <div class="brand-overlay">
         <h3 class="brand-name">Oakley</h3>
         <p class="brand-desc">Rendimiento y tecnología para deportes y aventura.</p>
@@ -255,3 +258,4 @@
     </div>
   </div>
 </section>
+ </div>
