@@ -6,6 +6,31 @@
   <div class="alert alert-success"><?= html_escape($success_msg) ?></div>
 <?php endif; ?>
 
+<div class="wave-background">
+    <!-- Ondas principales -->
+    <div class="wave-vector wave-1"></div>
+    <div class="wave-vector wave-2"></div>
+    <div class="wave-vector wave-3"></div>
+    <div class="wave-vector wave-4"></div>
+    <div class="wave-vector wave-5"></div>
+    
+    <!-- Ondas circulares -->
+    <div class="circle-wave circle-1"></div>
+    <div class="circle-wave circle-2"></div>
+    <div class="circle-wave circle-3"></div>
+    
+    <!-- Ondas fluidas -->
+    <div class="fluid-wave fluid-1"></div>
+    <div class="fluid-wave fluid-2"></div>
+    <div class="fluid-wave fluid-3"></div>
+    
+    <!-- Partículas ondulantes -->
+    <div class="wave-particle particle-1"></div>
+    <div class="wave-particle particle-2"></div>
+    <div class="wave-particle particle-3"></div>
+    <div class="wave-particle particle-4"></div>
+</div>
+
 <div class="containerlog">
     <div class="form-container2">
       <div class="form-blob">

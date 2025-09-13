@@ -45,4 +45,8 @@ setTimeout(() => {
 }, 30000); // 30 segundos
 
 
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
 

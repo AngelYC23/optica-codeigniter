@@ -12,7 +12,6 @@ class Categorias extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // Cargar la base de datos para usar $this->db
         $this->load->database();
     }
 
@@ -28,8 +27,6 @@ class Categorias extends CI_Controller
     {
         $data['titulo'] = 'Gafas de Lectura';
         $data['extra_css'] = ['assets/css/categorias/categoria.css'];
-
-        // Traer productos de la categoría "Gafas de Lectura"
         $categoria = $this->db->get_where('categorias', ['nombre' => 'Gafas de Lectura'])->row_array();
         if ($categoria) {
             $data['productos'] = $this->db
@@ -45,13 +42,10 @@ class Categorias extends CI_Controller
         $this->load->view('layouts/footer');
     }
 
-    // Otros métodos similares...
-
     public function gafasdesol()
     {
         $data['titulo'] = 'Gafas de Sol';
         $data['extra_css'] = ['assets/css/categorias/categoria.css'];
-        // Traer productos de la categoría "Gafas de Sol"
         $categoria = $this->db->get_where('categorias', ['nombre' => 'Gafas de Sol '])->row_array();
         if ($categoria) {
             $data['productos'] = $this->db
@@ -70,9 +64,6 @@ class Categorias extends CI_Controller
     {
         $data['titulo'] = 'Lentes de Contacto';
         $data['extra_css'] = ['assets/css/categorias/categoria.css'];
-
-        // Traer productos de la categoría "Lentes de Contacto"
-        
         $categoria = $this->db->get_where('categorias', ['nombre' => 'Lentes de Contacto '])->row_array();
         if ($categoria) {
             $data['productos'] = $this->db
@@ -101,8 +92,6 @@ class Categorias extends CI_Controller
     {
         $data['titulo'] = 'Gafas Deportivas';
         $data['extra_css'] = ['assets/css/categorias/categoria.css'];
-
-        // Traer productos de la categoría "Gafas Deportivas"
         $categoria = $this->db->get_where('categorias', ['nombre' => 'Gafas Deportivas'])->row_array();
         if ($categoria) {
             $data['productos'] = $this->db
@@ -123,8 +112,6 @@ class Categorias extends CI_Controller
     {
         $data['titulo'] = 'Gafas para Niños';
         $data['extra_css'] = ['assets/css/categorias/categoria.css'];
-
-        // Traer productos de la categoría "Gafas de niños"
         $categoria = $this->db->get_where('categorias', ['nombre' => 'Gafas para Niños'])->row_array();
         if ($categoria) {
             $data['productos'] = $this->db
