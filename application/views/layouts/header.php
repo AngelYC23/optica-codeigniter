@@ -79,6 +79,7 @@
                   <?php if ($this->session->userdata('id_rol') == 1): ?>
                     <li><a href="<?= base_url('index.php/gestion_articulos') ?>"><i class="fas fa-box"></i> Gestionar Artículos</a></li>
                     <li><a href="<?= base_url('index.php/usuarios') ?>"><i class="fas fa-users"></i> Usuarios</a></li>
+                    <li><a href="<?= base_url('index.php/dashboard') ?>"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                   <?php endif; ?>
 
                   <li><a href="<?= base_url('index.php/compras') ?>"><i class="fas fa-shopping-bag"></i> Mis Compras</a></li>
