@@ -32,7 +32,8 @@ class Dashboard_model extends CI_Model {
       ";
 
       if ($fecha_inicio && $fecha_fin) {
-          $sql .= " AND DATE(fecha) BETWEEN " . $this->db->escape($fecha_inicio) . " AND " . $this->db->escape($fecha_fin);
+        $sql .= " AND fecha >= " . $this->db->escape($fecha_inicio);
+        $sql .= " AND fecha < DATE_ADD(" . $this->db->escape($fecha_fin) . ", INTERVAL 1 DAY)";
       }
 
       $sql .= " GROUP BY estado";
